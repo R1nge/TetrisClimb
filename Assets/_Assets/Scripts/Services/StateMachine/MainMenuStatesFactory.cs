@@ -9,11 +9,13 @@ namespace _Assets.Scripts.Services.StateMachine
     {
         private readonly UIStateMachine _uiStateMachine;
         private readonly PlayerFactory _playerFactory;
+        private readonly TetrisFactory _tetrisFactory;
 
-        private MainMenuStatesFactory(UIStateMachine uiStateMachine, PlayerFactory playerFactory)
+        private MainMenuStatesFactory(UIStateMachine uiStateMachine, PlayerFactory playerFactory, TetrisFactory tetrisFactory)
         {
             _uiStateMachine = uiStateMachine;
             _playerFactory = playerFactory;
+            _tetrisFactory = tetrisFactory;
         }
 
         public IAsyncState CreateAsyncState(GameStateType gameStateType, GameStateMachine gameStateMachine)
@@ -23,7 +25,7 @@ namespace _Assets.Scripts.Services.StateMachine
                 case GameStateType.Init:
                     return new InitState(gameStateMachine, _uiStateMachine);
                 case GameStateType.Game:
-                    return new GameState(gameStateMachine, _uiStateMachine, _playerFactory);
+                    return new GameState(gameStateMachine, _uiStateMachine, _playerFactory, _tetrisFactory);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(gameStateType), gameStateType, null);
             }

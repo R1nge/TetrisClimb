@@ -7,6 +7,8 @@ namespace _Assets.Scripts.Configs
     [CreateAssetMenu(fileName = "TetrisConfig", menuName = "Configs/TetrisConfig", order = 0)]
     public class TetrisConfig : ScriptableObject
     {
+        [SerializeField] private TetrisView prefab;
+        public TetrisView Prefab => prefab; 
         [SerializeField] private Sprite i;
         [SerializeField] private Sprite j;
         [SerializeField] private Sprite l;
@@ -15,7 +17,7 @@ namespace _Assets.Scripts.Configs
         [SerializeField] private Sprite t;
         [SerializeField] private Sprite z;
         
-        public Sprite GetPrefab(TetrisView.TetrisBlockType tetrisBlockType)
+        public Sprite GetSprite(TetrisView.TetrisBlockType tetrisBlockType)
         {
             return tetrisBlockType switch
             {

@@ -10,17 +10,20 @@ namespace _Assets.Scripts.Services.StateMachine.States
         private readonly GameStateMachine _stateMachine;
         private readonly UIStateMachine _uiStateMachine;
         private readonly PlayerFactory _playerFactory;
+        private readonly TetrisFactory _tetrisFactory;
 
-        public GameState(GameStateMachine stateMachine, UIStateMachine uiStateMachine, PlayerFactory playerFactory)
+        public GameState(GameStateMachine stateMachine, UIStateMachine uiStateMachine, PlayerFactory playerFactory, TetrisFactory tetrisFactory)
         {
             _stateMachine = stateMachine;
             _uiStateMachine = uiStateMachine;
             _playerFactory = playerFactory;
+            _tetrisFactory = tetrisFactory;
         }
 
         public async UniTask Enter()
         {
             await _uiStateMachine.SwitchState(UIStateType.Game);
+            _tetrisFactory.CreateRandom(Vector2.zero);
             _playerFactory.Create(Vector3.zero);
         }
 

@@ -1,26 +1,17 @@
-﻿using System;
-using _Assets.Scripts.Configs;
+﻿using _Assets.Scripts.Configs;
 using UnityEngine;
 using VContainer;
-using Random = UnityEngine.Random;
 
 namespace _Assets.Scripts.Gameplay.Tetris
 {
     public class TetrisView : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private TetrisBlockType tetrisBlockType;
         [Inject] private ConfigProvider _configProvider;
 
-        private void Awake()
+        public void UpdateView(TetrisBlockType tetrisBlockType)
         {
-            tetrisBlockType = (TetrisBlockType)Random.Range(0, Enum.GetNames(typeof(TetrisBlockType)).Length);
-            UpdateView();
-        }
-
-        public void UpdateView()
-        {
-            spriteRenderer.sprite = _configProvider.TetrisConfig.GetPrefab(tetrisBlockType);
+            spriteRenderer.sprite = _configProvider.TetrisConfig.GetSprite(tetrisBlockType);
         }
 
         public enum TetrisBlockType : byte
