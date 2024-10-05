@@ -7,15 +7,15 @@ namespace _Assets.Scripts.Gameplay.Tetris
 {
     public class TetrisController : MonoBehaviour
     {
-        private TetrisMovement _tetrisMovement;
-        private TetrisRotation _tetrisRotation;
-
         private bool _canMove = true;
         private bool _canRotate = true;
-        private bool _rotationKeyReleased = true;
 
         [Inject] private ConfigProvider _configProvider;
         [Inject] private InputService _inputService;
+        private bool _moveKeyReleased = true;
+        private bool _rotationKeyReleased = true;
+        private TetrisMovement _tetrisMovement;
+        private TetrisRotation _tetrisRotation;
 
         private void Awake()
         {
@@ -34,7 +34,19 @@ namespace _Assets.Scripts.Gameplay.Tetris
         {
             if (_canMove)
             {
-                _tetrisMovement.Move(_inputService.GetMovementInput(false));
+                Vector3 direction = _inputService.GetMovementInput(false);
+
+                if (direction != Vector3.zero && _moveKeyReleased)
+                {
+                    _tetrisMovement.Move(direction);
+                    _moveKeyReleased = false;
+                }
+                else if (direction == Vector3.zero)
+                {
+                    _moveKeyReleased = true;
+                }
+
+                _tetrisMovement.MoveDown();
             }
         }
 

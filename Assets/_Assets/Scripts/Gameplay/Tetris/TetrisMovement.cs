@@ -5,9 +5,9 @@ namespace _Assets.Scripts.Gameplay.Tetris
 {
     public class TetrisMovement
     {
-        private readonly Transform _transform;
         private readonly ConfigProvider _configProvider;
         private readonly Vector3 _direction = new Vector2(0, -1);
+        private readonly Transform _transform;
 
         public TetrisMovement(ConfigProvider configProvider, Transform transform)
         {
@@ -15,6 +15,10 @@ namespace _Assets.Scripts.Gameplay.Tetris
             _configProvider = configProvider;
         }
 
-        public void Move(Vector3 direction) => _transform.position += (_direction + direction) * (_configProvider.TetrisConfig.Speed * Time.deltaTime);
+        public void Move(Vector3 direction) => _transform.position +=
+            direction * (_configProvider.TetrisConfig.MoveDistance * Time.deltaTime);
+
+        public void MoveDown() =>
+            _transform.position += _direction * (_configProvider.GameConfig.Gravity * Time.deltaTime);
     }
 }

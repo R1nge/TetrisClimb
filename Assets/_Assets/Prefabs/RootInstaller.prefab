@@ -65,3 +65,4 @@ MonoBehaviour:
   uiConfig: {fileID: 11400000, guid: c01c0ec4a5855f641b051cf97763b193, type: 2}
   characterConfig: {fileID: 11400000, guid: 5bc68c14e6f41294680ef38e2df42bef, type: 2}
   tetrisConfig: {fileID: 11400000, guid: c74201cf1335cdc4bb88916c496e40f9, type: 2}
+  gameConfig: {fileID: 11400000, guid: 1a4f95b4c24d0294db47432bc909e20f, type: 2}

@@ -8,12 +8,10 @@ namespace _Assets.Scripts.Configs
     public class TetrisConfig : ScriptableObject
     {
         [SerializeField] private TetrisView prefab;
-        [SerializeField] private float speed;
-        public float Speed => speed;
+
+        [SerializeField] private int moveDistance;
 
         [SerializeField] private int rotationAngle = 90;
-        public int RotationAngle => rotationAngle;
-        public TetrisView Prefab => prefab; 
         [SerializeField] private Sprite i;
         [SerializeField] private Sprite j;
         [SerializeField] private Sprite l;
@@ -21,7 +19,10 @@ namespace _Assets.Scripts.Configs
         [SerializeField] private Sprite s;
         [SerializeField] private Sprite t;
         [SerializeField] private Sprite z;
-        
+        public int MoveDistance => moveDistance;
+        public int RotationAngle => rotationAngle;
+        public TetrisView Prefab => prefab;
+
         public Sprite GetSprite(TetrisView.TetrisBlockType tetrisBlockType)
         {
             return tetrisBlockType switch

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: TetrisConfig
   m_EditorClassIdentifier: 
   prefab: {fileID: 393405288742374882, guid: a3a4751a6a45f19438871815cc2ae57a, type: 3}
-  speed: 0.5
+  moveDistance: 10
+  rotationAngle: 90
   i: {fileID: -4238741078948325039, guid: e3e6f2e6ec61e2a46ab23232db6cc2fb, type: 3}
   j: {fileID: 3434173147924482913, guid: 191567d6f6746ee4b8757a8973840c4b, type: 3}
   l: {fileID: 5468913412877036676, guid: 2115edae938f78543a39c7c40847b2b3, type: 3}
