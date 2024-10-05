@@ -15,9 +15,6 @@ namespace _Assets.Scripts.Gameplay.Tetris
             _configProvider = configProvider;
         }
 
-        public void Move(Vector3 direction)
-        {
-            _transform.position += (_direction + direction) * (_configProvider.TetrisConfig.Speed * Time.deltaTime);
-        } 
+        public void Move(Vector3 direction) => _transform.position += (_direction + direction) * (_configProvider.TetrisConfig.Speed * Time.deltaTime);
     }
 }

@@ -14,14 +14,8 @@ namespace _Assets.Scripts.Gameplay.Inputs
             return GetTetrisInput();
         }
         
-        private Vector2 GetCharacterInput()
-        {
-            return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        }
+        private Vector2 GetCharacterInput() => new(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        private Vector2 GetTetrisInput()
-        {
-            return new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
-        }
+        private Vector2 GetTetrisInput() => new(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
     }
 }

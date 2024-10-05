@@ -14,9 +14,6 @@ namespace _Assets.Scripts.Gameplay.Character.Movement
             _transform = transform;
         }
 
-        public void Move(Vector3 direction)
-        {
-            _transform.position += direction * (_configProvider.CharacterConfig.Speed * Time.deltaTime);
-        }
+        public void Move(Vector3 direction) => _transform.position += direction * (_configProvider.CharacterConfig.Speed * Time.deltaTime);
     }
 }
