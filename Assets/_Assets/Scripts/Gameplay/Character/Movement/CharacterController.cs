@@ -15,6 +15,6 @@ namespace _Assets.Scripts.Gameplay.Character.Movement
 
         private void Awake() => _characterMovement = new CharacterMovement(_configProvider, transform);
 
-        private void Update() => _characterMovement.Move(_inputService.GetInput(true));
+        private void Update() => _characterMovement.Move(_inputService.GetMovementInput(true));
     }
 }

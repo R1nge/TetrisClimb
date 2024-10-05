@@ -10,6 +10,9 @@ namespace _Assets.Scripts.Configs
         [SerializeField] private TetrisView prefab;
         [SerializeField] private float speed;
         public float Speed => speed;
+
+        [SerializeField] private int rotationAngle = 90;
+        public int RotationAngle => rotationAngle;
         public TetrisView Prefab => prefab; 
         [SerializeField] private Sprite i;
         [SerializeField] private Sprite j;
