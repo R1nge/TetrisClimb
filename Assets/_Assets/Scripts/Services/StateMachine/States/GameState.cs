@@ -23,7 +23,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
         public async UniTask Enter()
         {
             await _uiStateMachine.SwitchState(UIStateType.Game);
-            _tetrisFactory.CreateRandom(Vector2.zero);
+            _tetrisFactory.CreateRandom(Vector2.up);
             _playerFactory.Create(Vector3.zero);
         }
 

@@ -8,6 +8,8 @@ namespace _Assets.Scripts.Configs
     public class TetrisConfig : ScriptableObject
     {
         [SerializeField] private TetrisView prefab;
+        [SerializeField] private float speed;
+        public float Speed => speed;
         public TetrisView Prefab => prefab; 
         [SerializeField] private Sprite i;
         [SerializeField] private Sprite j;

@@ -1,5 +1,5 @@
-﻿using System;
-using _Assets.Scripts.Configs;
+﻿using _Assets.Scripts.Configs;
+using _Assets.Scripts.Gameplay.Inputs;
 using UnityEngine;
 using VContainer;
 
@@ -8,20 +8,13 @@ namespace _Assets.Scripts.Gameplay.Character.Movement
     public class CharacterController : MonoBehaviour
     {
         private CharacterMovement _characterMovement;
-        private CharacterInput _characterInput;
 
         [Inject] private ConfigProvider _configProvider;
+        [Inject] private InputService _inputService;
 
 
-        private void Awake()
-        {
-            _characterMovement = new CharacterMovement(_configProvider, transform);
-            _characterInput = new CharacterInput();
-        }
+        private void Awake() => _characterMovement = new CharacterMovement(_configProvider, transform);
 
-        private void Update()
-        {
-            _characterMovement.Move(_characterInput.GetInput());
-        }
+        private void Update() => _characterMovement.Move(_inputService.GetInput(true));
     }
 }

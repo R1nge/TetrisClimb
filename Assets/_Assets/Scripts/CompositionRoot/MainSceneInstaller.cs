@@ -1,9 +1,11 @@
+using _Assets.Scripts.Gameplay.Inputs;
 using _Assets.Scripts.Services.Factories;
 using _Assets.Scripts.Services.StateMachine;
 using _Assets.Scripts.Services.StateMachine.StatesCreators;
 using _Assets.Scripts.Services.UIs;
 using _Assets.Scripts.Services.UIs.StateMachine;
 using _Assets.Scripts.Services.UIs.StatesCreators;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
