@@ -100,6 +100,7 @@ namespace _Assets.Scripts.Gameplay.Tetris
         {
             _canMove = false;
             _canRotate = false;
+            rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 }

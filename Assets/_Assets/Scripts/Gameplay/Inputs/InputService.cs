@@ -29,7 +29,7 @@ namespace _Assets.Scripts.Gameplay.Inputs
         public Vector3 GetTetrisRotationInput()
         {
             if (Input.GetKey(KeyCode.Q))
-                return new Vector3(0, 0,-1);
+                return new Vector3(0, 0, -1);
             if (Input.GetKey(KeyCode.E))
                 return new Vector3(0, 0, 1);
 
@@ -42,6 +42,8 @@ namespace _Assets.Scripts.Gameplay.Inputs
                 return new Vector2(-1, 0);
             if (Input.GetKey(KeyCode.RightArrow))
                 return new Vector2(1, 0);
+            if (Input.GetKey(KeyCode.UpArrow))
+                return new Vector2(0, 1);
 
             return Vector2.zero;
         }
