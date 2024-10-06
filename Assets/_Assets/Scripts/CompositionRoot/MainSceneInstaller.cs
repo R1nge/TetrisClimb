@@ -1,3 +1,4 @@
+using _Assets.Scripts.Gameplay.Tetris;
 using _Assets.Scripts.Services.Factories;
 using _Assets.Scripts.Services.StateMachine;
 using _Assets.Scripts.Services.StateMachine.StatesCreators;
@@ -13,6 +14,7 @@ namespace _Assets.Scripts.CompositionRoot
         protected override void Configure(IContainerBuilder builder)
         {
             //TODO: move to the game scene installer
+            builder.Register<TetrisCollisionService>(Lifetime.Singleton);
             builder.Register<PlayerFactory>(Lifetime.Singleton);
             builder.Register<TetrisFactory>(Lifetime.Singleton);
             //

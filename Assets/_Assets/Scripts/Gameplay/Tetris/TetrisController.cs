@@ -1,5 +1,6 @@
 ﻿using _Assets.Scripts.Configs;
 using _Assets.Scripts.Gameplay.Inputs;
+using _Assets.Scripts.Services.Factories;
 using UnityEngine;
 using VContainer;
 
@@ -8,7 +9,6 @@ namespace _Assets.Scripts.Gameplay.Tetris
     public class TetrisController : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D rigidbody2D;
-
         private bool _canMove = true;
         private bool _canRotate = true;
 
@@ -16,8 +16,13 @@ namespace _Assets.Scripts.Gameplay.Tetris
         [Inject] private InputService _inputService;
         private bool _moveKeyReleased = true;
         private bool _rotationKeyReleased = true;
+        [Inject] private TetrisCollisionService _tetrisCollisionService;
+        [Inject] private TetrisFactory _tetrisFactory;
         private TetrisMovement _tetrisMovement;
         private TetrisRotation _tetrisRotation;
+
+        public bool CanMove => _canMove;
+        public bool CanRotate => _canRotate;
 
         private void Awake()
         {
@@ -40,16 +45,19 @@ namespace _Assets.Scripts.Gameplay.Tetris
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.transform.TryGetComponent(out TetrisView tetrisView))
+            if (other.transform.TryGetComponent(out TetrisController tetrisController))
             {
-                _canMove = false;
-                _canRotate = false;
+                _tetrisCollisionService.Collide(this, tetrisController);
             }
 
             if (other.transform.TryGetComponent(out GroundView groundView))
             {
-                _canMove = false;
-                _canRotate = false;
+                if (_canMove && _canRotate)
+                {
+                    _tetrisFactory.CreateRandom(Vector2.one);
+                }
+
+                Block();
             }
         }
 
@@ -86,6 +94,12 @@ namespace _Assets.Scripts.Gameplay.Tetris
                     _rotationKeyReleased = true;
                 }
             }
+        }
+
+        public void Block()
+        {
+            _canMove = false;
+            _canRotate = false;
         }
     }
 }
