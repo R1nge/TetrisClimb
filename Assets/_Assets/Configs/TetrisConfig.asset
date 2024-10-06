@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139a9b8fd2949e29ec68c3dd18a8852, type: 3}
   m_Name: TetrisConfig
   m_EditorClassIdentifier: 
-  prefab: {fileID: 393405288742374882, guid: a3a4751a6a45f19438871815cc2ae57a, type: 3}
+  iPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
+  jPrefab: {fileID: 5620677386391065242, guid: ac667fc147c1f384cad81cbd4604d4f6, type: 3}
+  lPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
+  oPrefab: {fileID: 5620677386391065242, guid: ac667fc147c1f384cad81cbd4604d4f6, type: 3}
+  sPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
+  tPrefab: {fileID: 5620677386391065242, guid: ac667fc147c1f384cad81cbd4604d4f6, type: 3}
+  zPrefab: {fileID: 5620677386391065242, guid: ac667fc147c1f384cad81cbd4604d4f6, type: 3}
   moveDistance: 10
   rotationAngle: 90
-  i: {fileID: -4238741078948325039, guid: e3e6f2e6ec61e2a46ab23232db6cc2fb, type: 3}
-  j: {fileID: 3434173147924482913, guid: 191567d6f6746ee4b8757a8973840c4b, type: 3}
-  l: {fileID: 5468913412877036676, guid: 2115edae938f78543a39c7c40847b2b3, type: 3}
-  o: {fileID: -6954380925705944171, guid: 59cf29116568019408f5fadfca4ac267, type: 3}
-  s: {fileID: 3613111811619338325, guid: 1d7a8e8add7b7264c90993830c6d8a41, type: 3}
-  t: {fileID: 1218813290267555989, guid: eeed0cfa4039f974e8fcafa90bc319bf, type: 3}
-  z: {fileID: 8164426468745037271, guid: 26a2191a7af9fc5499c9943440c325d3, type: 3}

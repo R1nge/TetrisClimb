@@ -8,11 +8,12 @@ namespace _Assets.Scripts.Services.Factories
 {
     public class TetrisFactory
     {
-        private readonly IObjectResolver _objectResolver;
         private readonly ConfigProvider _configProvider;
+        private readonly IObjectResolver _objectResolver;
         private readonly RandomGenerator _randomGenerator;
 
-        private TetrisFactory(IObjectResolver objectResolver, ConfigProvider configProvider, RandomGenerator randomGenerator)
+        private TetrisFactory(IObjectResolver objectResolver, ConfigProvider configProvider,
+            RandomGenerator randomGenerator)
         {
             _objectResolver = objectResolver;
             _configProvider = configProvider;
@@ -26,8 +27,8 @@ namespace _Assets.Scripts.Services.Factories
 
         private void Create(Vector2 position, TetrisView.TetrisBlockType tetrisBlockType)
         {
-            var tetris = _objectResolver.Instantiate(_configProvider.TetrisConfig.Prefab, position, Quaternion.identity);
-            tetris.UpdateView(tetrisBlockType);
+            var tetris = _objectResolver.Instantiate(_configProvider.TetrisConfig.GetPrefab(tetrisBlockType), position,
+                Quaternion.identity);
             tetris.transform.position = position;
         }
     }

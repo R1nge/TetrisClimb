@@ -6,19 +6,23 @@ namespace _Assets.Scripts.Gameplay.Tetris
     public class TetrisMovement
     {
         private readonly ConfigProvider _configProvider;
-        private readonly Vector3 _direction = new Vector2(0, -1);
-        private readonly Transform _transform;
+        private readonly Vector2 _direction = new Vector2(0, -1);
+        private readonly Rigidbody2D _rigidbody2D;
+        private Vector2 _input;
 
-        public TetrisMovement(ConfigProvider configProvider, Transform transform)
+        public TetrisMovement(ConfigProvider configProvider, Rigidbody2D rigidbody2D)
         {
-            _transform = transform;
+            _rigidbody2D = rigidbody2D;
             _configProvider = configProvider;
         }
 
-        public void Move(Vector3 direction) => _transform.position +=
-            direction * (_configProvider.TetrisConfig.MoveDistance * Time.deltaTime);
+        public void SetInput(Vector2 direction) => _input = direction;
 
-        public void MoveDown() =>
-            _transform.position += _direction * (_configProvider.GameConfig.Gravity * Time.deltaTime);
+        public void ResetInput() => _input = Vector2.zero;
+
+        public void Move() =>
+            _rigidbody2D.MovePosition(_rigidbody2D.position +
+                                      (_direction * _configProvider.GameConfig.Gravity +
+                                       _input * _configProvider.TetrisConfig.MoveDistance) * Time.deltaTime);
     }
 }

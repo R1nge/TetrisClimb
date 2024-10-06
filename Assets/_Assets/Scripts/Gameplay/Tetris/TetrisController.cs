@@ -7,6 +7,8 @@ namespace _Assets.Scripts.Gameplay.Tetris
 {
     public class TetrisController : MonoBehaviour
     {
+        [SerializeField] private Rigidbody2D rigidbody2D;
+
         private bool _canMove = true;
         private bool _canRotate = true;
 
@@ -19,7 +21,7 @@ namespace _Assets.Scripts.Gameplay.Tetris
 
         private void Awake()
         {
-            _tetrisMovement = new TetrisMovement(_configProvider, transform);
+            _tetrisMovement = new TetrisMovement(_configProvider, rigidbody2D);
             _tetrisRotation = new TetrisRotation(_configProvider, transform);
         }
 
@@ -30,6 +32,27 @@ namespace _Assets.Scripts.Gameplay.Tetris
         }
 
 
+        private void FixedUpdate()
+        {
+            _tetrisMovement.Move();
+            _tetrisMovement.ResetInput();
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.transform.TryGetComponent(out TetrisView tetrisView))
+            {
+                _canMove = false;
+                _canRotate = false;
+            }
+
+            if (other.transform.TryGetComponent(out GroundView groundView))
+            {
+                _canMove = false;
+                _canRotate = false;
+            }
+        }
+
         private void Move()
         {
             if (_canMove)
@@ -38,15 +61,13 @@ namespace _Assets.Scripts.Gameplay.Tetris
 
                 if (direction != Vector3.zero && _moveKeyReleased)
                 {
-                    _tetrisMovement.Move(direction);
+                    _tetrisMovement.SetInput(direction);
                     _moveKeyReleased = false;
                 }
                 else if (direction == Vector3.zero)
                 {
                     _moveKeyReleased = true;
                 }
-
-                _tetrisMovement.MoveDown();
             }
         }
 

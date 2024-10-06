@@ -1,19 +1,9 @@
-﻿using _Assets.Scripts.Configs;
-using UnityEngine;
-using VContainer;
+﻿using UnityEngine;
 
 namespace _Assets.Scripts.Gameplay.Tetris
 {
     public class TetrisView : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        [Inject] private ConfigProvider _configProvider;
-
-        public void UpdateView(TetrisBlockType tetrisBlockType)
-        {
-            spriteRenderer.sprite = _configProvider.TetrisConfig.GetSprite(tetrisBlockType);
-        }
-
         public enum TetrisBlockType : byte
         {
             I = 0,
