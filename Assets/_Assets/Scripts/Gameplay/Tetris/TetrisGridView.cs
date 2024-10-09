@@ -25,6 +25,11 @@ namespace _Assets.Scripts.Gameplay.Tetris
                     (TetrisBlockType)Random.Range(1, 8);
             }
 
+            if (Input.GetMouseButtonDown(1))
+            {
+                _tetrisGridService.CheckRows();
+            }
+
             UpdateView(ref _tetrisGridService.Data);
         }
 
