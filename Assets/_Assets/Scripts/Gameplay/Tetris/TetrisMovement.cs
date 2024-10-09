@@ -20,9 +20,14 @@ namespace _Assets.Scripts.Gameplay.Tetris
 
         public void ResetInput() => _input = Vector2.zero;
 
-        public void Move() =>
-            _rigidbody2D.MovePosition(_rigidbody2D.position +
-                                      (_direction * _configProvider.GameConfig.Gravity +
-                                       _input * _configProvider.TetrisConfig.MoveDistance) * Time.deltaTime);
+        public void Move()
+        {
+            var newPos = _rigidbody2D.position +
+                         (_direction * _configProvider.GameConfig.Gravity +
+                          _input * _configProvider.TetrisConfig.MoveDistance) * Time.fixedDeltaTime;
+            var newPosRoundedToInt = new Vector2(Mathf.RoundToInt(newPos.x), Mathf.RoundToInt(newPos.y));
+            Debug.Log(newPosRoundedToInt);
+            _rigidbody2D.MovePosition(newPosRoundedToInt);
+        }
     }
 }

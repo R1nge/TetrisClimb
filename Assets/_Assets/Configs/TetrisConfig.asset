@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: TetrisConfig
   m_EditorClassIdentifier: 
   iPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
-  jPrefab: {fileID: 5620677386391065242, guid: ac667fc147c1f384cad81cbd4604d4f6, type: 3}
+  jPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
   lPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
-  oPrefab: {fileID: 5620677386391065242, guid: ac667fc147c1f384cad81cbd4604d4f6, type: 3}
+  oPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
   sPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
-  tPrefab: {fileID: 5620677386391065242, guid: ac667fc147c1f384cad81cbd4604d4f6, type: 3}
-  zPrefab: {fileID: 5620677386391065242, guid: ac667fc147c1f384cad81cbd4604d4f6, type: 3}
-  moveDistance: 10
+  tPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
+  zPrefab: {fileID: 5620677386391065242, guid: b137f17b287bc604ab9249ed3ee222d8, type: 3}
+  moveDistance: 50
   rotationAngle: 90
