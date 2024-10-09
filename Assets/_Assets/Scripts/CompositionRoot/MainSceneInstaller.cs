@@ -14,9 +14,8 @@ namespace _Assets.Scripts.CompositionRoot
         protected override void Configure(IContainerBuilder builder)
         {
             //TODO: move to the game scene installer
-            builder.Register<TetrisCollisionService>(Lifetime.Singleton);
+            builder.Register<TetrisGridService>(Lifetime.Singleton);
             builder.Register<PlayerFactory>(Lifetime.Singleton);
-            builder.Register<TetrisFactory>(Lifetime.Singleton);
             //
 
             builder.Register<MainMenuUIStatesFactory>(Lifetime.Singleton);

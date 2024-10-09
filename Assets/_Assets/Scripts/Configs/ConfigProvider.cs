@@ -8,12 +8,9 @@ namespace _Assets.Scripts.Configs
 
         [SerializeField] private CharacterConfig characterConfig;
 
-        [SerializeField] private TetrisConfig tetrisConfig;
-
         [SerializeField] private GameConfig gameConfig;
         public UIConfig UIConfig => uiConfig;
         public CharacterConfig CharacterConfig => characterConfig;
-        public TetrisConfig TetrisConfig => tetrisConfig;
         public GameConfig GameConfig => gameConfig;
     }
 }

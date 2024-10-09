@@ -6,7 +6,7 @@ namespace _Assets.Scripts.Gameplay.Tetris
     public class RandomGenerator
     {
         private static readonly string[] Tetrominoes = { "I", "J", "L", "O", "S", "T", "Z" };
-        private Queue<TetrisView.TetrisBlockType> currentBag;
+        private Queue<TetrisBlockType> currentBag;
         private Random random;
 
         public RandomGenerator()
@@ -15,7 +15,7 @@ namespace _Assets.Scripts.Gameplay.Tetris
             currentBag = GenerateNewBag();
         }
 
-        private Queue<TetrisView.TetrisBlockType> GenerateNewBag()
+        private Queue<TetrisBlockType> GenerateNewBag()
         {
             List<string> bag = new List<string>(Tetrominoes);
             for (int i = bag.Count - 1; i > 0; i--)
@@ -24,16 +24,16 @@ namespace _Assets.Scripts.Gameplay.Tetris
                 (bag[i], bag[j]) = (bag[j], bag[i]);
             }
 
-            var result = new Queue<TetrisView.TetrisBlockType>();
+            var result = new Queue<TetrisBlockType>();
             foreach (var tetromino in bag)
             {
-                result.Enqueue((TetrisView.TetrisBlockType)Enum.Parse(typeof(TetrisView.TetrisBlockType), tetromino));
+                result.Enqueue((TetrisBlockType)Enum.Parse(typeof(TetrisBlockType), tetromino));
             }
 
-            return new Queue<TetrisView.TetrisBlockType>(result);
+            return new Queue<TetrisBlockType>(result);
         }
 
-        public TetrisView.TetrisBlockType GetNextTetris()
+        public TetrisBlockType GetNextTetris()
         {
             if (currentBag.Count == 0)
             {
