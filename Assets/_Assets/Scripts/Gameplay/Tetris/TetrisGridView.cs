@@ -25,7 +25,7 @@ namespace _Assets.Scripts.Gameplay.Tetris
                     (TetrisBlockType)Random.Range(1, 8);
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Time.frameCount % 60 == 0)
             {
                 _tetrisGridService.CheckRows();
             }

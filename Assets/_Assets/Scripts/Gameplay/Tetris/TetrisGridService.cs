@@ -33,10 +33,26 @@ namespace _Assets.Scripts.Gameplay.Tetris
         public void CheckRows()
         {
             RowsIndexiesToDelete.Clear();
+            bool canBeDeleted = false;
             for (int rows = 0; rows < Data.GetLength(0); rows++)
             {
                 for (int columns = 0; columns < Data.GetLength(1); columns++)
                 {
+                    var maxOccupiedCol = 0;
+                    for (int col = 0; col < Data.GetLength(1); col++)
+                    {
+                        if (Data[rows, col].TetrisBlockType == TetrisBlockType.None)
+                        {
+                            maxOccupiedCol = col - 1;
+                            break;
+                        }
+                    }
+
+                    if (Data[rows, maxOccupiedCol + 1].TetrisBlockType == TetrisBlockType.None)
+                    {
+                        break;
+                    }
+
                     if (Data[rows, columns].TetrisBlockType == TetrisBlockType.None)
                     {
                         break;
@@ -51,9 +67,7 @@ namespace _Assets.Scripts.Gameplay.Tetris
                 DeleteRows();
             }
 
-
             MoveDownRows();
-            RowsIndexiesToDelete.Clear();
         }
 
         private void DeleteRows()
