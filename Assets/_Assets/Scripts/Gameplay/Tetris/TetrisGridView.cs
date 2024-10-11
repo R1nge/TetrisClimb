@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
-using Random = UnityEngine.Random;
 
 namespace _Assets.Scripts.Gameplay.Tetris
 {
@@ -21,13 +20,22 @@ namespace _Assets.Scripts.Gameplay.Tetris
         {
             if (Input.GetMouseButtonDown(0))
             {
-                _tetrisGridService.Data[Random.Range(0, 10), Random.Range(0, 10)].TetrisBlockType =
-                    (TetrisBlockType)Random.Range(1, 8);
+                var randomTetrisType = (TetrisBlockType)6; //(TetrisBlockType) Random.Range(0, 7);
+                _tetrisGridService.CreateNewTetris(randomTetrisType);
             }
 
             if (Time.frameCount % 60 == 0)
             {
                 _tetrisGridService.CheckRows();
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                _tetrisGridService.UpdatePlayerTetrisPosition(Vector2Int.left);
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                _tetrisGridService.UpdatePlayerTetrisPosition(Vector2Int.right);
             }
 
             UpdateView(ref _tetrisGridService.Data);
